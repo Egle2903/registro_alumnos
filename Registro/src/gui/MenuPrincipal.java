@@ -10,31 +10,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import javax.swing.JRadioButtonMenuItem;
 
-public class menu_principal extends JFrame {
+public class MenuPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					menu_principal frame = new menu_principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public menu_principal() {
+	public MenuPrincipal() {
 		setTitle("Menú Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 370);
@@ -102,5 +86,7 @@ public class menu_principal extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
 		mnConsulta.add(mntmNewMenuItem_2);
+		
+		setVisible(true);
 	}
 }
