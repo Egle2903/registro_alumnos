@@ -68,18 +68,47 @@ public class Login extends JFrame {
         String usuario = txtUsuario.getText().trim();
         String password = new String(txtPassword.getPassword()).trim();
 
-        if (usuariosMap.containsKey(usuario) && usuariosMap.get(usuario).equals(password)) {
-            JOptionPane.showMessageDialog(this, "Login exitoso.");
-            this.dispose();
-            JFrame menuPrincipal = new MenuPrincipal();
-        } else {
-            intentos++;
-            if (intentos >= MAX_INTENTOS) {
-                JOptionPane.showMessageDialog(this, "Ha superado el número máximo de intentos.", "Login Fallido", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
+        // Validación de campos vacíos
+        
+        if (usuario.isEmpty() && password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor introduzca el usuario y clave.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if (usuario.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor introduzca el usuario.", "Campo usuario vacío", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor introduzca la contraseña.", "Campo contraseña vacío", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Verificación de usuario y contraseña 
+        
+        String mensajeError;
+
+        if (usuariosMap.containsKey(usuario)) {
+            if (usuariosMap.get(usuario).equals(password)) {
+                JOptionPane.showMessageDialog(this, "Login exitoso.");
+                this.dispose();
+                new MenuPrincipal();
+                return;
             } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de " + MAX_INTENTOS, "Error", JOptionPane.WARNING_MESSAGE);
+                mensajeError = "Contraseña incorrecta para el usuario '" + usuario + "'.";
             }
+        } else {
+            mensajeError = "El usuario '" + usuario + "' no existe.";
+        }
+
+        intentos++;
+
+        if (intentos >= MAX_INTENTOS) {
+            JOptionPane.showMessageDialog(this,
+                "Ha superado el número máximo de intentos permitidos.\n" + mensajeError,
+                "Login Fallido", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                mensajeError + "\nIntento " + intentos + " de " + MAX_INTENTOS,
+                "Error", JOptionPane.WARNING_MESSAGE);
         }
     }
 }

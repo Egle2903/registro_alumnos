@@ -75,17 +75,38 @@ public class MenuPrincipal extends JFrame {
 		JMenu mnMatrícula = new JMenu("Matrícula");
 		mnRegistro.add(mnMatrícula);
 		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Adicionar");
+		mnMatrícula.add(mntmNewMenuItem_5);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Consultar, Modificar, Eliminar");
+		mnMatrícula.add(mntmNewMenuItem);
+		
 		JMenu mnRetiro = new JMenu("Retiro");
 		mnRegistro.add(mnRetiro);
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Consultar, Modificar, Eliminar");
+		mnRetiro.add(mntmNewMenuItem_6);
 		
 		JMenu mnConsulta = new JMenu("Consulta");
 		menuBar.add(mnConsulta);
 		
-		JMenu mnAlumnosCursos = new JMenu(" Alumnos y Cursos");
-		mnConsulta.add(mnAlumnosCursos);
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Alumno y curso");
+		mnConsulta.add(mntmNewMenuItem_4);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
-		mnConsulta.add(mntmNewMenuItem_2);
+		JMenuItem mntmMatricula_y_Retiro = new JMenuItem("Matrícula y retiro");
+		mnConsulta.add(mntmMatricula_y_Retiro);
+		
+		JMenu mnReporte = new JMenu("Reporte");
+		menuBar.add(mnReporte);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Alumnos con matrícula pendiente");
+		mnReporte.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Alumnos con matrícula vigente");
+		mnReporte.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Alumnos matrículados por curso");
+		mnReporte.add(mntmNewMenuItem_3);
 		
 		setVisible(true);
 	}
